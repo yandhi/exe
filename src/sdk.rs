@@ -19,4 +19,13 @@ impl BasePlayerPawn {
     pub fn get_ent_index(pawn_base: usize, process: &Process) -> Result<i32, ProcMemError> {
         process.read_mem::<i32>(pawn_base + M_I_IDENT_INDEX)
     }
+
+    pub fn on_ground(pawn_base: usize, process: &Process) -> Result<bool, ProcMemError> {
+        process.read_mem::<bool>(pawn_base + M_B_ON_GROUND_LAST_TICK)
+    }
+
+    pub fn flags(pawn_base: usize, process: &Process) -> Result<i32, ProcMemError> {
+        process.read_mem::<i32>(pawn_base + FLAGS)
+    }
+
 }
