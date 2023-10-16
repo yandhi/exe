@@ -20,16 +20,3 @@ impl BasePlayerPawn {
         process.read_mem::<i32>(pawn_base + M_I_IDENT_INDEX)
     }
 }
-
-pub struct ListEntry;
-
-impl ListEntry {
-    pub fn get_list_entry(ent_list: usize, index: usize, process: &Process) -> Result<usize, ProcMemError>{
-        process.read_mem::<usize>(ent_list + (8 * (index & 0x7FFF) >> 9) + 16)
-    }
-
-    pub fn get_inner(list_entry: usize, index: usize, process: &Process) -> Result<usize, ProcMemError> {
-        process.read_mem::<usize>(list_entry + 120 * (index & 0x1FF))
-    }
-
-}
